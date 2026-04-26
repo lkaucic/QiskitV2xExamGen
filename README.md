@@ -1,12 +1,15 @@
+# qiskit-question-bank/
+
+```text
 qiskit-question-bank/
 │
-├── generate_quiz.py              # Main script: loads YAML, selects questions, builds LaTeX
-├── requirements.txt             # pyyaml, jinja2 (optional)
-├── README.md                    # How to use project
+├── generate_quiz.py
+├── requirements.txt
+├── README.md
 │
 ├── config/
-│   ├── distribution.yaml        # Section percentages / quiz rules
-│   └── settings.yaml            # Default quiz size, seed, options
+│   ├── distribution.yaml
+│   └── settings.yaml
 │
 ├── questions/
 │   ├── section1_perform_operations.yaml
@@ -19,9 +22,9 @@ qiskit-question-bank/
 │   └── section8_openqasm.yaml
 │
 ├── templates/
-│   ├── quiz_template.tex        # Main LaTeX template
-│   ├── answer_key.tex           # Optional separate answer key layout
-│   └── macros.tex               # Optional custom commands (\ket{}, etc.)
+│   ├── quiz_template.tex
+│   ├── answer_key.tex
+│   └── macros.tex
 │
 ├── output/
 │   ├── quiz_001.tex
@@ -30,8 +33,8 @@ qiskit-question-bank/
 │   └── archive/
 │
 ├── assets/
-│   ├── logo.png                 # Optional IBM / personal logo
-│   └── images/                 # Circuit images if ever needed
+│   ├── logo.png
+│   └── images/
 │
 └── tests/
     ├── test_loader.py
