@@ -28,15 +28,10 @@ qiskit-question-bank/
 │
 ├── output/
 │   ├── quiz_001.tex
-│   ├── quiz_001.pdf
-│   ├── quiz_001_answers.pdf
-│   └── archive/
 │
 ├── assets/
 │   ├── logo.png
 │   └── images/
 │
 └── tests/
-    ├── test_loader.py
-    ├── test_distribution.py
-    └── test_latex_render.py
+    ├── test_001.pdf
