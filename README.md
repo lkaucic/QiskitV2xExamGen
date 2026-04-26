@@ -543,13 +543,3 @@ Possible next steps:
 - support question tags such as `gates`, `sampler`, `estimator`, `transpilation`
 
 ---
-
-## License
-
-Add your chosen license here if needed.
-
-Example:
-
-```text
-MIT License
-```
