@@ -55,8 +55,7 @@ qiskit-question-bank/
 │   ├── quiz_001.tex
 │
 ├── assets/
-│   ├── logo.png
-│   └── images/
+│   ├── circuits/
 │
 └── tests/
     ├── test_001.pdf
