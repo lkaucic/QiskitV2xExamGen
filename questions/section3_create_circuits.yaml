@@ -1,0 +1,34 @@
+- id: S3-001
+  section: 3
+  question: "Which code correctly creates a two-qubit quantum circuit?"
+  choices:
+    A: "QuantumCircuit()"
+    B: "QuantumCircuit(2)"
+    C: "Circuit(2)"
+    D: "QuantumRegister.create(2)"
+  answer: B
+
+- id: S3-002
+  section: 3
+  question: "What does the following circuit prepare?"
+  code: |
+    qc = QuantumCircuit(2)
+    qc.h(0)
+    qc.cx(0, 1)
+  choices:
+    A: "$\\ket{00}$"
+    B: "$\\ket{11}$"
+    C: "$\\frac{1}{\\sqrt{2}}(\\ket{00}+\\ket{11})$"
+    D: "$\\frac{1}{\\sqrt{2}}(\\ket{01}+\\ket{10})$"
+  answer: C
+
+- id: S3-004
+  section: 3
+  question: "What state does the circuit below prepare?"
+  image: "assets/circuits/bell.png"
+  choices:
+    A: "$\\ket{00}$"
+    B: "$\\ket{11}$"
+    C: "$\\frac{1}{\\sqrt{2}}(\\ket{00}+\\ket{11})$"
+    D: "$\\frac{1}{\\sqrt{2}}(\\ket{01}+\\ket{10})$"
+  answer: C

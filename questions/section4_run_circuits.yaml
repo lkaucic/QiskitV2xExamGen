@@ -1,0 +1,29 @@
+- id: S4-001
+  section: 4
+  question: "What is the purpose of transpilation?"
+  choices:
+    A: "To convert a circuit into backend-compatible instructions"
+    B: "To measure all qubits automatically"
+    C: "To create a statevector"
+    D: "To define an observable"
+  answer: A
+
+- id: S4-002
+  section: 4
+  question: "Why may SWAP gates be inserted during transpilation?"
+  choices:
+    A: "To reset qubits"
+    B: "To satisfy hardware connectivity constraints"
+    C: "To increase shot count"
+    D: "To remove all noise"
+  answer: B
+
+- id: S4-003
+  section: 4
+  question: "What does layout refer to in transpilation?"
+  choices:
+    A: "Mapping virtual qubits to physical qubits"
+    B: "Choosing the number of shots"
+    C: "Drawing the circuit"
+    D: "Choosing classical register names"
+  answer: A

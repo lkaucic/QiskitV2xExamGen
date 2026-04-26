@@ -1,0 +1,19 @@
+- id: S8-001
+  section: 8
+  question: "What is OpenQASM primarily used for?"
+  choices:
+    A: "Describing quantum circuits"
+    B: "Training classical neural networks"
+    C: "Managing cloud billing"
+    D: "Creating PDF files"
+  answer: A
+
+- id: S8-002
+  section: 8
+  question: "OpenQASM is best described as:"
+  choices:
+    A: "A language for representing quantum programs"
+    B: "A physical quantum processor"
+    C: "A Python plotting library"
+    D: "A classical database system"
+  answer: A

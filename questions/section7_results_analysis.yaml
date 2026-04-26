@@ -1,0 +1,19 @@
+- id: S7-001
+  section: 7
+  question: "What does increasing the number of shots usually improve?"
+  choices:
+    A: "Sampling precision"
+    B: "Circuit depth"
+    C: "Qubit connectivity"
+    D: "Gate fidelity automatically"
+  answer: A
+
+- id: S7-002
+  section: 7
+  question: "Which visualization is commonly used for measurement counts?"
+  choices:
+    A: "Histogram"
+    B: "Bloch sphere only"
+    C: "Circuit drawer only"
+    D: "Density matrix table only"
+  answer: A

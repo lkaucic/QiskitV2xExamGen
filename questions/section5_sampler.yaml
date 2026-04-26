@@ -1,0 +1,19 @@
+- id: S5-001
+  section: 5
+  question: "What does the Sampler primitive primarily return?"
+  choices:
+    A: "Expectation values"
+    B: "Measurement samples or bitstring results"
+    C: "Only statevectors"
+    D: "Only transpiled circuits"
+  answer: B
+
+- id: S5-002
+  section: 5
+  question: "When is Sampler more appropriate than Estimator?"
+  choices:
+    A: "When you need bitstring measurement outcomes"
+    B: "When you need expectation values of observables"
+    C: "When you need to draw a circuit"
+    D: "When you need to create a backend"
+  answer: A

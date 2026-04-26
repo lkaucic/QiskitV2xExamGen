@@ -1,0 +1,19 @@
+- id: S6-001
+  section: 6
+  question: "What does the Estimator primitive primarily compute?"
+  choices:
+    A: "Bitstring counts"
+    B: "Expectation values of observables"
+    C: "Circuit diagrams"
+    D: "Backend coupling maps"
+  answer: B
+
+- id: S6-002
+  section: 6
+  question: "Which object is commonly used to represent Pauli observables in Qiskit?"
+  choices:
+    A: "QuantumCircuit"
+    B: "SparsePauliOp"
+    C: "ClassicalRegister"
+    D: "PassManager"
+  answer: B

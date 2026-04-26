@@ -1,0 +1,19 @@
+- id: S2-001
+  section: 2
+  question: "What does the Bloch sphere represent?"
+  choices:
+    A: "Only classical bits"
+    B: "Single-qubit pure states"
+    C: "Only two-qubit entangled states"
+    D: "Classical probability distributions only"
+  answer: B
+
+- id: S2-002
+  section: 2
+  question: "Which state lies on the positive X axis of the Bloch sphere?"
+  choices:
+    A: "$\\ket{0}$"
+    B: "$\\ket{1}$"
+    C: "$\\ket{+}$"
+    D: "$\\ket{-}$"
+  answer: C

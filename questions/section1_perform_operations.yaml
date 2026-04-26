@@ -1,0 +1,29 @@
+- id: S1-001
+  section: 1
+  question: "What does an X gate do to $\\ket{0}$?"
+  choices:
+    A: "Creates $\\ket{+}$"
+    B: "Maps it to $\\ket{1}$"
+    C: "Measures the qubit"
+    D: "Adds a global phase only"
+  answer: B
+
+- id: S1-002
+  section: 1
+  question: "Which gate maps $\\ket{0}$ to $\\ket{+}$?"
+  choices:
+    A: "X"
+    B: "Z"
+    C: "H"
+    D: "CX"
+  answer: C
+
+- id: S1-003
+  section: 1
+  question: "What is the result of applying Z to $\\ket{1}$?"
+  choices:
+    A: "$\\ket{0}$"
+    B: "$\\ket{1}$"
+    C: "$-\\ket{1}$"
+    D: "$\\ket{+}$"
+  answer: C
