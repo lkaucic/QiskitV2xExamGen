@@ -20,7 +20,8 @@ The generator:
 - Generates a LaTeX exam file
 - Compiles it into a PDF using `pdflatex`
 - Generates an answer key at the end of the document
-
+...
+  
 ---
 
 # Recommended Project Structure
