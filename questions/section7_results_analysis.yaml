@@ -17,3 +17,105 @@
     C: "Circuit drawer only"
     D: "Density matrix table only"
   answer: A
+
+- id: S7-003
+  section: 7
+  question: "What is the default value for NAME\\_OF\\_CREG in the sampler PUB output?"
+  choices:
+    A: "clbit"
+    B: "meas"
+    C: "evs"
+    D: "pubs"
+  answer: B
+
+- id: S7-004
+  section: 7
+  question: "Given the code below, how would you retrieve probability distribution from sampler results? Assume all components have been imported correctly."
+  code: |
+    qbits = QuantumRegister(2,"qbits")
+    clbits = ClassicalRegister(2,"clbits")
+    qc = QuantumCircuit(qbits, clbits)
+    (q0, q1) = qbits
+    (c0, c1) = clbits
+    qc.h(0)
+    qc.cx(0,1)
+    qc.measure(qbits,clbits)
+    service = QiskitRuntimeService()
+    backend = service.least_busy()
+    pm = generate_preset_pass_manager(backend=backend,optimization_level=2)
+    qc_isa = pm.run(qc)
+    sampler = SamplerV2(mode=backend)
+    job =sampler.run([qc_isa])
+    result = job.result()
+  choices:
+    A: "counts = result[0].data.meas.get\\_counts()"
+    B: "counts = result[0].data.clbits.get\\_counts()"
+    C: "counts = result[0].data.evs.get\\_counts()"
+    D: "counts = result[0].data.stds.get\\_counts()"
+  answer: B
+
+- id: S7-005
+  section: 7
+  question: "Given the code below, how would you retrieve probability distribution from sampler results? Assume all components have been imported correctly."
+  code: |
+    qbits = QuantumRegister(2,"qbits")
+    clbits = ClassicalRegister(2,"clbits")
+    qc = QuantumCircuit(qbits, clbits)
+    (q0, q1) = qbits
+    (c0, c1) = clbits
+    qc.h(0)
+    qc.cx(0,1)
+    qc.measure_all()
+    service = QiskitRuntimeService()
+    backend = service.least_busy()
+    pm = generate_preset_pass_manager(backend=backend,optimization_level=2)
+    qc_isa = pm.run(qc)
+    sampler = SamplerV2(mode=backend)
+    job =sampler.run([qc_isa])
+    result = job.result()
+  choices:
+    A: "counts = result[0].data.meas.get\\_counts()"
+    B: "counts = result[0].data.clbits.get\\_counts()"
+    C: "counts = result[0].data.evs.get\\_counts()"
+    D: "counts = result[0].data.stds.get\\_counts()"
+  answer: A
+
+- id: S7-006
+  section: 7
+  question: "How long can you access previously submitted jobs?"
+  choices:
+    A: "Jobs are retained for 30 days after completion"
+    B: "Jobs are retained for 1 year after completion"
+    C: "Undeleted job data is retained for three years while you continue using the service"
+    D: "Jobs are permanently accessible unless manually deleted"
+  answer: C
+
+- id: S7-007
+  section: 7
+  question: "You can access your submitted jobs by providing QiskitRuntimeService().jobs() method which of the following?"
+  choices:
+    A: "date jobs were created after"
+    B: "date jobs were created before"
+    C: "CRN"
+    D: "API key"
+  answer: [A,B,C]
+
+- id: S7-008
+  section: 7
+  question: "Which of these are valid JobStatus values?"
+  choices:
+    A: "INITIALIZING"
+    B: "INTERRUPTED"
+    C: "CANCELLED"
+    D: "WAITING"
+  answer: [A,C]
+
+- id: S7-009
+  section: 7
+  question: "Which of these you can't access when fetching session details via Session.detail()?"
+  choices:
+    A: "backend_name"
+    B: "mode"
+    C: "max\\_time"
+    D: "none of the above"
+  answer: D

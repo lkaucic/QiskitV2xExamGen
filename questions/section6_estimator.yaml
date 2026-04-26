@@ -17,3 +17,73 @@
     C: "ClassicalRegister"
     D: "PassManager"
   answer: B
+
+- id: S6-003
+  section: 6
+  question: "What are return values of the Estimator when the observable is Pauli Z on a single qubit?"
+  choices:
+    A: "0 or 1"
+    B: "$\\ket{0}$ or $\\ket{1}$"
+    C: "a real number between -1 and +1"
+    D: "a real number between 0 and +1"
+  answer: C
+
+- id: S6-004
+  section: 6
+  question: "If a qubit measured in Z basis has probabilities $P(0)=0.7$ and $P(1)=0.3$ what is the expectation value of Z"
+  choices:
+    A: "$1.0$"
+    B: "$0.7$"
+    C: "$-1.0$"
+    D: "$0.4$"
+  answer: D
+
+- id: S6-005
+  section: 6
+  question: "Which of these is not a valid Estimator PUB entry?"
+  choices:
+    A: "a single parametarized quantum circuit"
+    B: "$a single quantum circuit that contains no parameters"
+    C: "target precision"
+    D: "number of shots"
+  answer: D
+
+- id: S6-006
+  section: 6
+  question: "Which techniques are commonly configured directly through dedicated Estimator option groups rather than relying only on resilience\\_level"
+  choices:
+    A: "Dynamical decoupling"
+    B: "Twirled readout error extinction"
+    C: "Pauli Twirling"
+    D: "Zero Noise Extrapolation"
+  answer: [A,C]
+
+- id: S6-007
+  section: 6
+  question: "Which of these is not a valid Estimator PUB entry?"
+  choices:
+    A: "a single parametarized quantum circuit"
+    B: "a single quantum circuit that contains no parameters"
+    C: "target precision"
+    D: "number of shots"
+  answer: D
+
+- id: S6-008
+  section: 6
+  question: "A Qiskit Runtime Estimator job is executed with precision = 0.02. The precision value is then changed to 0.01, while all other settings remain unchanged. Which of the following best describes the expected effect?"
+  choices:
+    A: "Fewer shots are used"
+    B: "Precision only affects Sampler, not Estimator"
+    C: "target precision"
+    D: "Backend changes automatically to the Sampler"
+  answer: B
+
+- id: S6-009
+  section: 6
+  question: "If the observable is identity I, what expectation value should Estimator ideally return for any normalized state?"
+  choices:
+    A: "0"
+    B: "-1"
+    C: "Depends on the number of shots"
+    D: "1"
+  answer: D

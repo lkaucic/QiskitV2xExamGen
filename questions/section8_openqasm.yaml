@@ -13,9 +13,9 @@
   section: 8
   question: "When exporting Qiskit code to OpenQASM 3 as a file, which of these method has to be used?"
   choices:
-    A: "export_to_qasm()"
+    A: "export\\_to\\_qasm()"
     B: "dumps()"
-    C: "qiskit_to_qasm()"
+    C: "qiskit\\_t\\o_qasm()"
     D: "dump()"
   answer: B
 
@@ -24,31 +24,29 @@
   question: "Which OpenQASM 3 variable declaration corresponds to Qiskit's ClassicalRegister declaration?"
   choices:
     A: "bit"
-    B: "clreq[]"
-    C: "bit[]"
-    D: "clbit[]"
+    B: "clreq[ ]"
+    C: "bit[ ]"
+    D: "clbit[ ]"
   answer: C
 
 - id: S8-004
   section: 8
   question: "Which of the following state vectors corresponds to the following OpenQASM 3 code?"
   code: |
-    program = """
-      OPENQASM 3;
-      include "stdgates.inc";
+    OPENQASM 3;
+    include "stdgates.inc";
 
-      qubit[2] q;
-      bit[2] c;
+    qubit[2] q;
+    bit[2] c;
 
-      h q[0];
-      cx q[1], q[0];
-      z q[1];
-    """"
+    h q[0];
+    cx q[1], q[0];
+    z q[1];
   choices:
     A: "$\\frac{\\sqrt{2}}{2}\\ket{00} + \\frac{\\sqrt{2}}{2}\\ket{01}$"
-    B: "\\frac{1}{\\sqrt{2}}\\ket{00} + \\frac{1}{\\sqrt{2}}\\ket{11} "
-    C: "\\frac{\\sqrt{2}}{2}\\ket{00} - \\frac{\\sqrt{2}}{2}\\ket{01} "
-    D: "\\frac{1}{\\sqrt{2}}\\ket{00} - \\frac{1}{\\sqrt{2}}\\ket{11} "
+    B: "$\\frac{1}{\\sqrt{2}}\\ket{00} + \\frac{1}{\\sqrt{2}}\\ket{11}$"
+    C: "$\\frac{\\sqrt{2}}{2}\\ket{00} - \\frac{\\sqrt{2}}{2}\\ket{01}$"
+    D: "$\\frac{1}{\\sqrt{2}}\\ket{00} - \\frac{1}{\\sqrt{2}}\\ket{11}$"
   answer: A
 
 - id: S8-005
