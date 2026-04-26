@@ -100,8 +100,39 @@ def select_questions(question_bank):
 # LATEX HELPERS
 # =========================
 
+def render_choice(choice):
+
+    if isinstance(choice, str):
+        return choice
+
+    parts = []
+
+    if "text" in choice:
+        parts.append(choice["text"])
+
+    if "image" in choice:
+        parts.append(
+            f"\\adjustbox{{max width=0.35\\linewidth,max height=0.12\\textheight}}{{"
+            f"\\includegraphics{{{choice['image']}}}"
+            f"}}"
+        )
+
+    return " ".join(parts)
+
+
+def choices_are_images(q):
+    return all(
+        isinstance(q["choices"][key], dict)
+        and "image" in q["choices"][key]
+        for key in ["A", "B", "C", "D"]
+    )
+
+
 def render_question(q):
-    latex = f"\\item {q['question']}\n\n"
+    if isinstance(q["answer"], list):
+        latex = f"\\item {q['question']} \\textit{{(Select all that apply)}}\n\n"
+    else:
+        latex = f"\\item {q['question']}\n\n"
 
     if "code" in q:
         latex += "\\begin{lstlisting}[language=Python]\n"
@@ -110,15 +141,34 @@ def render_question(q):
 
     if "image" in q:
         latex += "\\begin{center}\n"
-        latex += f"\\adjustbox{{max width=0.8\\linewidth,max height=0.22\\textheight}}{{\\includegraphics{{{q['image']}}}}}\n"
+        latex += (
+            f"\\adjustbox{{max width=0.65\\linewidth,max height=0.18\\textheight}}{{"
+            f"\\includegraphics{{{q['image']}}}"
+            f"}}\n"
+        )
         latex += "\\end{center}\n\n"
 
-    latex += "\\begin{enumerate}[label=\\Alph*.]\n"
+    if choices_are_images(q):
 
-    for key in ["A", "B", "C", "D"]:
-        latex += f"\\item {q['choices'][key]}\n"
+        latex += "\\begin{center}\n"
+        latex += "\\begin{tabular}{cc}\n"
 
-    latex += "\\end{enumerate}\n\n"
+        latex += f"\\textbf{{A.}} {render_choice(q['choices']['A'])} & "
+        latex += f"\\textbf{{B.}} {render_choice(q['choices']['B'])} \\\\\n"
+
+        latex += f"\\textbf{{C.}} {render_choice(q['choices']['C'])} & "
+        latex += f"\\textbf{{D.}} {render_choice(q['choices']['D'])}\n"
+
+        latex += "\\end{tabular}\n"
+        latex += "\\end{center}\n\n"
+
+    else:
+        latex += "\\begin{enumerate}[label=\\Alph*.]\n"
+
+        for key in ["A", "B", "C", "D"]:
+            latex += f"\\item {render_choice(q['choices'][key])}\n"
+
+        latex += "\\end{enumerate}\n\n"
 
     return latex
 
@@ -127,7 +177,10 @@ def render_answers(questions):
     out = "\\begin{enumerate}\n"
 
     for q in questions:
-        out += f"\\item {q['id']}: {q['answer']}\n"
+        ans = q["answer"]
+        if isinstance(ans, list):
+            ans = ", ".join(ans)
+        out += f"\\item {q['id']}: {ans}\n"
 
     out += "\\end{enumerate}\n"
 

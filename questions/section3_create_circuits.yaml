@@ -22,6 +22,41 @@
     D: "$\\frac{1}{\\sqrt{2}}(\\ket{01}+\\ket{10})$"
   answer: C
 
+- id: S3-003
+  section: 3
+  question: "Which one of the following images is the output from the code below:"
+  code: |
+    from qiskit import *
+    from math import pi
+
+    qubits = QuantumRegister(2)
+    clbits = ClassicalRegister(2)
+    qc = QuantumCircuit(qubits,clbits)
+    (q0, q1) = qubits
+    (c1, c2) = clbits
+
+    qc.h(0)
+    qc.z(1)
+    qc.barrier()
+    qc.measure(q0, c1)
+    with qc.if_test((c1,1)) as else_:
+        qc.x(q1)
+    with else_:
+        qc.rx(pi, q1)
+    qc.barrier()
+    qc.measure(q1,c2)
+    qc.draw(output="mpl",plot_barriers=False)
+  choices:
+    A:
+      image: "assets/circuits/if_choices_1/a.png"
+    B:
+      image: "assets/circuits/if_choices_1/b.png"
+    C:
+      image: "assets/circuits/if_choices_1/c.png"
+    D:
+      image: "assets/circuits/if_choices_1/d.png"
+  answer: A
+
 - id: S3-004
   section: 3
   question: "What state does the circuit below prepare?"
