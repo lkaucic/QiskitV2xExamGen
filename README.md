@@ -20,7 +20,6 @@ The generator:
 - Generates a LaTeX exam file
 - Compiles it into a PDF using `pdflatex`
 - Generates an answer key at the end of the document
-...
   
 ---
 
@@ -60,7 +59,7 @@ qiskit-question-bank/
 │
 └── tests/
     ├── test_001.pdf
-
+```
 ---
 
 ## Requirements
