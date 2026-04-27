@@ -59,11 +59,75 @@
 
 - id: S3-004
   section: 3
-  question: "What state does the circuit below prepare?"
-  image: "assets/circuits/bell.png"
+  question: "Which of the following passes are used in heuristic stage of transpilation layout stage?"
   choices:
-    A: "$\\ket{00}$"
-    B: "$\\ket{11}$"
-    C: "$\\frac{1}{\\sqrt{2}}(\\ket{00}+\\ket{11})$"
-    D: "$\\frac{1}{\\sqrt{2}}(\\ket{01}+\\ket{10})$"
+    A: "TrivialLayout"
+    B: "DenseLayout"
+    C: "VF2Layout"
+    D: "SabreLayout"
+  answer: [B,D]
+
+- id: S3-005
+  section: 3
+  question: "Which of the following is used for optimization considering code below? Assume all prerequisties were imported."
+  code: |
+    qc = QuantumCircuit(10)
+    qc.h(0)
+    for i in range(9):
+        qc.cx(i,i+1)
+    service = QiskitRuntimeService()
+    backend = service.least_busy()
+    pm = generate_preset_pass_manager(2,backend=backend)
+    qc_isa = pm.run(qc)
+  choices:
+    A: "TrivialLayout"
+    B: "CXCancellation"
+    C: "CommutativeCancellation"
+    D: "KAK Decomposition"
   answer: C
+
+- id: S3-006
+  section: 3
+  question: "Which of the circuits below is possible output for the code below? "
+  code: |
+    from qiskit import *
+    from qiskit_ibm_runtime import QiskitRuntimeService
+    from qiskit.transpiler.preset_passmanagers import generate_preset_pass_manager
+    from math import pi
+
+    qc = QuantumCircuit(4)
+    qc.h(0)
+    for i in range(2):
+        qc.cx(i,i+1)
+    qc.z(1)
+    qc.rx(pi,1)
+    service = QiskitRuntimeService()
+    backend = service.least_busy()
+    pm = generate_preset_pass_manager(
+        optimization_level=1,
+        basis_gates=["rx","cx","h"],
+        coupling_map=[[0,2],[1,3],[1,2]]
+    )
+    qc_isa = pm.run(qc)
+    qc_isa.draw("mpl",idle_wires=True)
+  choices:
+    A:
+      image: "assets/circuits/transpilation_choices_1/c.png"
+    B:
+      image: "assets/circuits/transpilation_choices_1/b.png"
+    C:
+      image: "assets/circuits/transpilation_choices_1/d.png"
+    D:
+      image: "assets/circuits/transpilation_choices_1/a.png"
+  answer: D
+
+- id: S3-007
+  section: 3
+  question: "Which of the following are transpiler stages?"
+  choices:
+    A: "Layout"
+    B: "Routing"
+    C: "Decomposing"
+    D: "Scheduling"
+  answer: [A,B,D]
+

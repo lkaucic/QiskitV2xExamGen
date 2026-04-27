@@ -18,58 +18,40 @@
 \section*{Questions}
 
 \begin{enumerate}
-\item Which of these are OpenQASM 3 features? \textit{(Select all that apply)}
+\item What does layout refer to in transpilation?
 
 \begin{enumerate}[label=\Alph*.]
-\item while loops
-\item angle
-\item try/catch
-\item barrier
+\item Mapping virtual qubits to physical qubits
+\item Choosing the number of shots
+\item Drawing the circuit
+\item Choosing classical register names
 \end{enumerate}
 
-\item If the observable is identity I, what expectation value should Estimator ideally return for any normalized state?
+\item Why may SWAP gates be inserted during transpilation?
 
 \begin{enumerate}[label=\Alph*.]
-\item 0
-\item -1
-\item Depends on the number of shots
-\item 1
+\item To reset qubits
+\item To satisfy hardware connectivity constraints
+\item To increase shot count
+\item To remove all noise
 \end{enumerate}
 
-\item What is the result of applying Z to $\ket{1}$?
+\item OpenQASM is best described as:
 
 \begin{enumerate}[label=\Alph*.]
-\item $\ket{0}$
-\item $\ket{1}$
-\item $-\ket{1}$
-\item $\ket{+}$
+\item A language for representing quantum programs
+\item A physical quantum processor
+\item A Python plotting library
+\item A classical database system
 \end{enumerate}
 
-\item When is Sampler more appropriate than Estimator?
+\item What does the Sampler primitive primarily return?
 
 \begin{enumerate}[label=\Alph*.]
-\item When you need bitstring measurement outcomes
-\item When you need expectation values of observables
-\item When you need to draw a circuit
-\item When you need to create a backend
-\end{enumerate}
-
-\item Which gate maps $\ket{0}$ to $\ket{+}$?
-
-\begin{enumerate}[label=\Alph*.]
-\item X
-\item Z
-\item H
-\item CX
-\end{enumerate}
-
-\item What is the purpose of transpilation?
-
-\begin{enumerate}[label=\Alph*.]
-\item To convert a circuit into backend-compatible instructions
-\item To measure all qubits automatically
-\item To create a statevector
-\item To define an observable
+\item Expectation values
+\item Measurement samples or bitstring results
+\item Only statevectors
+\item Only transpiled circuits
 \end{enumerate}
 
 \item Which state lies on the positive X axis of the Bloch sphere?
@@ -81,17 +63,143 @@
 \item $\ket{-}$
 \end{enumerate}
 
-\item What state does the circuit below prepare?
-
-\begin{center}
-\adjustbox{max width=0.65\linewidth,max height=0.18\textheight}{\includegraphics{assets/circuits/bell.png}}
-\end{center}
+\item Which of these is not a valid Estimator PUB entry?
 
 \begin{enumerate}[label=\Alph*.]
-\item $\ket{00}$
-\item $\ket{11}$
-\item $\frac{1}{\sqrt{2}}(\ket{00}+\ket{11})$
-\item $\frac{1}{\sqrt{2}}(\ket{01}+\ket{10})$
+\item a single parametarized quantum circuit
+\item $a single quantum circuit that contains no parameters
+\item target precision
+\item number of shots
+\end{enumerate}
+
+\item What does the Bloch sphere represent?
+
+\begin{enumerate}[label=\Alph*.]
+\item Only classical bits
+\item Single-qubit pure states
+\item Only two-qubit entangled states
+\item Classical probability distributions only
+\end{enumerate}
+
+\item What does increasing the number of shots usually improve?
+
+\begin{enumerate}[label=\Alph*.]
+\item Sampling precision
+\item Circuit depth
+\item Qubit connectivity
+\item Gate fidelity automatically
+\end{enumerate}
+
+\item What is the result of applying Z to $\ket{1}$?
+
+\begin{enumerate}[label=\Alph*.]
+\item $\ket{0}$
+\item $\ket{1}$
+\item $-\ket{1}$
+\item $\ket{+}$
+\end{enumerate}
+
+\item What is the purpose of transpilation?
+
+\begin{enumerate}[label=\Alph*.]
+\item To convert a circuit into backend-compatible instructions
+\item To measure all qubits automatically
+\item To create a statevector
+\item To define an observable
+\end{enumerate}
+
+\item When is Sampler more appropriate than Estimator?
+
+\begin{enumerate}[label=\Alph*.]
+\item When you need bitstring measurement outcomes
+\item When you need expectation values of observables
+\item When you need to draw a circuit
+\item When you need to create a backend
+\end{enumerate}
+
+\item Which of the following passes are used in heuristic stage of transpilation layout stage? \textit{(Select all that apply)}
+
+\begin{enumerate}[label=\Alph*.]
+\item TrivialLayout
+\item DenseLayout
+\item VF2Layout
+\item SabreLayout
+\end{enumerate}
+
+\item Which gate maps $\ket{0}$ to $\ket{+}$?
+
+\begin{enumerate}[label=\Alph*.]
+\item X
+\item Z
+\item H
+\item CX
+\end{enumerate}
+
+\item Which OpenQASM 3 variable declaration corresponds to Qiskit's ClassicalRegister declaration?
+
+\begin{enumerate}[label=\Alph*.]
+\item bit
+\item clreq[ ]
+\item bit[ ]
+\item clbit[ ]
+\end{enumerate}
+
+\item A Qiskit Runtime Estimator job is executed with precision = 0.02. The precision value is then changed to 0.01, while all other settings remain unchanged. Which of the following best describes the expected effect?
+
+\begin{enumerate}[label=\Alph*.]
+\item Fewer shots are used
+\item Precision only affects Sampler, not Estimator
+\item target precision
+\item Backend changes automatically to the Sampler
+\end{enumerate}
+
+\item Given the code below, how would you retrieve probability distribution from sampler results? Assume all components have been imported correctly.
+
+\begin{lstlisting}[language=Python]
+qbits = QuantumRegister(2,"qbits")
+clbits = ClassicalRegister(2,"clbits")
+qc = QuantumCircuit(qbits, clbits)
+(q0, q1) = qbits
+(c0, c1) = clbits
+qc.h(0)
+qc.cx(0,1)
+qc.measure_all()
+service = QiskitRuntimeService()
+backend = service.least_busy()
+pm = generate_preset_pass_manager(backend=backend,optimization_level=2)
+qc_isa = pm.run(qc)
+sampler = SamplerV2(mode=backend)
+job =sampler.run([qc_isa])
+result = job.result()
+
+\end{lstlisting}
+
+\begin{enumerate}[label=\Alph*.]
+\item counts = result[0].data.meas.get\_counts()
+\item counts = result[0].data.clbits.get\_counts()
+\item counts = result[0].data.evs.get\_counts()
+\item counts = result[0].data.stds.get\_counts()
+\end{enumerate}
+
+\item Which of the following is used for optimization considering code below? Assume all prerequisties were imported.
+
+\begin{lstlisting}[language=Python]
+qc = QuantumCircuit(10)
+qc.h(0)
+for i in range(9):
+    qc.cx(i,i+1)
+service = QiskitRuntimeService()
+backend = service.least_busy()
+pm = generate_preset_pass_manager(2,backend=backend)
+qc_isa = pm.run(qc)
+
+\end{lstlisting}
+
+\begin{enumerate}[label=\Alph*.]
+\item TrivialLayout
+\item CXCancellation
+\item CommutativeCancellation
+\item KAK Decomposition
 \end{enumerate}
 
 \item What does an X gate do to $\ket{0}$?
@@ -101,15 +209,6 @@
 \item Maps it to $\ket{1}$
 \item Measures the qubit
 \item Adds a global phase only
-\end{enumerate}
-
-\item What is the default value for NAME\_OF\_CREG in the sampler PUB output?
-
-\begin{enumerate}[label=\Alph*.]
-\item clbit
-\item meas
-\item evs
-\item pubs
 \end{enumerate}
 
 \item Which one of the following images is the output from the code below:
@@ -145,93 +244,38 @@ qc.draw(output="mpl",plot_barriers=False)
 \end{tabular}
 \end{center}
 
-\item Which object is commonly used to represent Pauli observables in Qiskit?
-
-\begin{enumerate}[label=\Alph*.]
-\item QuantumCircuit
-\item SparsePauliOp
-\item ClassicalRegister
-\item PassManager
-\end{enumerate}
-
-\item What does the following circuit prepare?
+\item Which of the circuits below is possible output for the code below? 
 
 \begin{lstlisting}[language=Python]
-qc = QuantumCircuit(2)
+from qiskit import *
+from qiskit_ibm_runtime import QiskitRuntimeService
+from qiskit.transpiler.preset_passmanagers import generate_preset_pass_manager
+from math import pi
+
+qc = QuantumCircuit(4)
 qc.h(0)
-qc.cx(0, 1)
+for i in range(2):
+    qc.cx(i,i+1)
+qc.z(1)
+qc.rx(pi,1)
+service = QiskitRuntimeService()
+backend = service.least_busy()
+pm = generate_preset_pass_manager(
+    optimization_level=1,
+    basis_gates=["rx","cx","h"],
+    coupling_map=[[0,2],[1,3],[1,2]]
+)
+qc_isa = pm.run(qc)
+qc_isa.draw("mpl",idle_wires=True)
 
 \end{lstlisting}
 
-\begin{enumerate}[label=\Alph*.]
-\item $\ket{00}$
-\item $\ket{11}$
-\item $\frac{1}{\sqrt{2}}(\ket{00}+\ket{11})$
-\item $\frac{1}{\sqrt{2}}(\ket{01}+\ket{10})$
-\end{enumerate}
-
-\item Which OpenQASM 3 variable declaration corresponds to Qiskit's ClassicalRegister declaration?
-
-\begin{enumerate}[label=\Alph*.]
-\item bit
-\item clreq[ ]
-\item bit[ ]
-\item clbit[ ]
-\end{enumerate}
-
-\item Why may SWAP gates be inserted during transpilation?
-
-\begin{enumerate}[label=\Alph*.]
-\item To reset qubits
-\item To satisfy hardware connectivity constraints
-\item To increase shot count
-\item To remove all noise
-\end{enumerate}
-
-\item What does the Sampler primitive primarily return?
-
-\begin{enumerate}[label=\Alph*.]
-\item Expectation values
-\item Measurement samples or bitstring results
-\item Only statevectors
-\item Only transpiled circuits
-\end{enumerate}
-
-\item How long can you access previously submitted jobs?
-
-\begin{enumerate}[label=\Alph*.]
-\item Jobs are retained for 30 days after completion
-\item Jobs are retained for 1 year after completion
-\item Undeleted job data is retained for three years while you continue using the service
-\item Jobs are permanently accessible unless manually deleted
-\end{enumerate}
-
-\item Which code correctly creates a two-qubit quantum circuit?
-
-\begin{enumerate}[label=\Alph*.]
-\item QuantumCircuit()
-\item QuantumCircuit(2)
-\item Circuit(2)
-\item QuantumRegister.create(2)
-\end{enumerate}
-
-\item What does layout refer to in transpilation?
-
-\begin{enumerate}[label=\Alph*.]
-\item Mapping virtual qubits to physical qubits
-\item Choosing the number of shots
-\item Drawing the circuit
-\item Choosing classical register names
-\end{enumerate}
-
-\item What does the Bloch sphere represent?
-
-\begin{enumerate}[label=\Alph*.]
-\item Only classical bits
-\item Single-qubit pure states
-\item Only two-qubit entangled states
-\item Classical probability distributions only
-\end{enumerate}
+\begin{center}
+\begin{tabular}{cc}
+\textbf{A.} \adjustbox{max width=0.35\linewidth,max height=0.12\textheight}{\includegraphics{assets/circuits/transpilation_choices_1/c.png}} & \textbf{B.} \adjustbox{max width=0.35\linewidth,max height=0.12\textheight}{\includegraphics{assets/circuits/transpilation_choices_1/b.png}} \\
+\textbf{C.} \adjustbox{max width=0.35\linewidth,max height=0.12\textheight}{\includegraphics{assets/circuits/transpilation_choices_1/d.png}} & \textbf{D.} \adjustbox{max width=0.35\linewidth,max height=0.12\textheight}{\includegraphics{assets/circuits/transpilation_choices_1/a.png}}
+\end{tabular}
+\end{center}
 
 
 \end{enumerate}
@@ -241,26 +285,26 @@ qc.cx(0, 1)
 \section*{Answer Key}
 
 \begin{enumerate}
-\item S8-005: A, B, D
-\item S6-009: D
-\item S1-003: C
-\item S5-002: A
-\item S1-002: C
-\item S4-001: A
-\item S2-002: C
-\item S3-004: C
-\item S1-001: B
-\item S7-003: B
-\item S3-003: A
-\item S6-002: B
-\item S3-002: C
-\item S8-003: C
-\item S4-002: B
-\item S5-001: B
-\item S7-006: C
-\item S3-001: B
 \item S4-003: A
+\item S4-002: B
+\item S8-001: A
+\item S5-001: B
+\item S2-002: C
+\item S6-005: D
 \item S2-001: B
+\item S7-001: A
+\item S1-003: C
+\item S4-001: A
+\item S5-002: A
+\item S3-004: B, D
+\item S1-002: C
+\item S8-003: C
+\item S6-008: B
+\item S7-005: A
+\item S3-005: C
+\item S1-001: B
+\item S3-003: A
+\item S3-006: D
 \end{enumerate}
 
 
