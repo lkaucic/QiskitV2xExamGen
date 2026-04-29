@@ -114,7 +114,7 @@
   section: 7
   question: "Which of these you can't access when fetching session details via Session.detail()?"
   choices:
-    A: "backend_name"
+    A: "backend\\_name"
     B: "mode"
     C: "max\\_time"
     D: "none of the above"

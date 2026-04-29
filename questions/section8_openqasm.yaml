@@ -15,7 +15,7 @@
   choices:
     A: "export\\_to\\_qasm()"
     B: "dumps()"
-    C: "qiskit\\_t\\o_qasm()"
+    C: "qiskit\\_to\\_qasm()"
     D: "dump()"
   answer: B
 

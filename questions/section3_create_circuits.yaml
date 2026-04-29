@@ -92,7 +92,8 @@
   code: |
     from qiskit import *
     from qiskit_ibm_runtime import QiskitRuntimeService
-    from qiskit.transpiler.preset_passmanagers import generate_preset_pass_manager
+    from qiskit.transpiler.preset_passmanagers import (
+      generate_preset_pass_manager, )
     from math import pi
 
     qc = QuantumCircuit(4)

@@ -110,6 +110,16 @@ def render_choice(choice):
     if "text" in choice:
         parts.append(choice["text"])
 
+    if "code" in choice:
+        code = choice["code"].rstrip()
+        parts.append(
+            "\\begin{minipage}[t]{0.92\\linewidth}\n"
+            "\\ttfamily\\small\n"
+            "\\obeylines\\obeyspaces\n"
+            f"{code}\n"
+            "\\end{minipage}"
+        )
+
     if "image" in choice:
         parts.append(
             f"\\adjustbox{{max width=0.35\\linewidth,max height=0.12\\textheight}}{{"
@@ -117,7 +127,7 @@ def render_choice(choice):
             f"}}"
         )
 
-    return " ".join(parts)
+    return "\n".join(parts)
 
 
 def choices_are_images(q):

@@ -43,7 +43,7 @@
   question: "Which of these is not a valid Estimator PUB entry?"
   choices:
     A: "a single parametarized quantum circuit"
-    B: "$a single quantum circuit that contains no parameters"
+    B: "a single quantum circuit that contains no parameters"
     C: "target precision"
     D: "number of shots"
   answer: D

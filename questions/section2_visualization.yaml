@@ -17,3 +17,64 @@
     C: "$\\ket{+}$"
     D: "$\\ket{-}$"
   answer: C
+
+- id: S2-003
+  section: 2
+  question: "Which code would generate the following qsphere?"
+  image: "assets/qsphere/sphere1.png"
+  choices:
+    A:
+      code: |
+        from qiskit import QuantumCircuit
+        from qiskit.visualization import plot\_state\_qsphere
+        qc = QuantumCircuit(2)
+        qc.h(0)
+        qc.cx(0,1)
+        qc.rz(np.pi/2,1)
+        qc.draw("mpl")
+        plot\_state\_qsphere(qc)
+    B:
+      code: |
+        from qiskit import QuantumCircuit
+        from qiskit.visualization import plot\_state\_qsphere
+        qc = QuantumCircuit(2)
+        qc.h(0)
+        qc.rx(np.pi/2,1)
+        qc.cx(0,1)
+        qc.draw("mpl")
+        plot\_state\_qsphere(qc)
+    C:
+      code: |
+        from qiskit import QuantumCircuit
+        from qiskit.visualization import plot\_state\_qsphere
+        qc = QuantumCircuit(2)
+        qc.h(0)
+        qc.cx(0,1)
+        qc.draw("mpl")
+        plot\_state\_qsphere(qc)
+    D:
+      code: |
+        from qiskit import QuantumCircuit
+        from qiskit.visualization import plot\_state\_qsphere
+        qc = QuantumCircuit(2)
+        qc.h(0)
+        qc.y(1)
+        qc.rx(np.pi/2,1)
+        qc.h(0)
+        plot\_state\_qsphere(qc)
+  answer: B
+
+- id: S2-004
+  section: 2
+  question: "Which circuit is most consistent with the following Estimator output graph?"
+  image: "assets/graphs/estimation1.png"
+  choices:
+    A: 
+      image: "assets/circuits/circ3.png"
+    B: 
+      image: "assets/circuits/circ2.png"
+    C: 
+      image: "assets/circuits/circ1.png"
+    D: 
+      image: "assets/circuits/bell.png"
+  answer: D
