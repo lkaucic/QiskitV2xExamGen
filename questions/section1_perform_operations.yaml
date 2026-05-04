@@ -27,3 +27,51 @@
     C: "$-\\ket{1}$"
     D: "$\\ket{+}$"
   answer: C
+
+- id: S1-004
+  section: 1
+  question: "Which Pauli operator has eigenstates $\\ket{+}$ and $\\ket{-}$"
+  choices:
+    A: "X"
+    B: "Y"
+    C: "Z"
+    D: "I"
+  answer: A
+
+- id: S1-005
+  section: 1
+  question: "What is the expectation value of measuring observable Z on state $\\ket{+}$"
+  choices:
+    A: "+1"
+    B: "-1"
+    C: "$+\\frac{1}{2}$"
+    D: "0"
+  answer: D
+
+- id: S1-006
+  section: 1
+  question: "Starting from $\\ket{0}$, the sequence $Rx(\\frac{\\pi}{2})$, $Rz(\\frac{\\pi}{2})$, $Ry(\\frac{-\\pi}{2})$ is applied. What single $R(\\theta,\\phi)$ gate is this sequence equivalent to"
+  choices:
+    A: "$R(2\\pi,0)$"
+    B: "$R(\\pi,\\frac{\\pi}{2})$"
+    C: "$R(\\frac{3\\pi}{2},2\\pi)$"
+    D: "R(\\frac{\\pi}{2},0)"
+  answer: A
+
+- id: S1-007
+  section: 1
+  question: "Given the following code fragment, what is the approximate probability that a measurement would result in a bit value of 1?"
+  code: |
+    from qiskit import QuantumCircuit
+    from numpy import pi
+    qc = QuantumCircuit(1)
+    qc.reset(0)
+    qc.sx(0)
+    qc.rx(pi/2,0)
+    qc.measure_all()
+  choices:
+    A: "0.75"
+    B: "0.0"
+    C: "0.5"
+    D: "1.0"
+  answer: D

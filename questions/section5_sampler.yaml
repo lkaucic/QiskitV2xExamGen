@@ -17,3 +17,16 @@
     C: "When you need to draw a circuit"
     D: "When you need to create a backend"
   answer: A
+
+- id: S5-003
+  section: 5
+  question: "Which of these options is unique to Sampler??"
+  choices:
+    A: "default\\_shots"
+    B: "default\\_precision"
+    C: "shots\\_per\\_randomization"
+    D: "none of the above"
+  answer: D
+
+  
+
