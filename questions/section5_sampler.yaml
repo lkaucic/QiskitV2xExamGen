@@ -20,13 +20,23 @@
 
 - id: S5-003
   section: 5
-  question: "Which of these options is unique to Sampler??"
+  question: "Which of these options is unique to Sampler?"
   choices:
     A: "default\\_shots"
     B: "default\\_precision"
     C: "shots\\_per\\_randomization"
     D: "none of the above"
   answer: D
+
+- id: S5-004
+  section: 5
+  question: "What happens if you run Sampler on a circuit without measurements?"
+  choices:
+    A: "Code won't run and error will be returner"
+    B: "Sampler will add measurements by itself and run the job"
+    C: "Job will run and result will be empty"
+    D: "none of the above"
+  answer: C
 
   
 

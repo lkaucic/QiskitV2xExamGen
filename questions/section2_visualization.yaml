@@ -78,3 +78,13 @@
     D: 
       image: "assets/circuits/bell.png"
   answer: D
+
+- id: S2-005
+  section: 2
+  question: "Two states give identical histograms, but different qsphere colors. What differs?"
+  choices:
+    A: "global phase"
+    B: "relative phase"
+    C: "amplitude magnitude"
+    D: "measurement basis"
+  answer: B

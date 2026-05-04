@@ -27,3 +27,41 @@
     C: "Drawing the circuit"
     D: "Choosing classical register names"
   answer: A
+
+- id: S4-004
+  section: 4
+  question: "Consider a parameterized circuit given by the code below. What is the shape of evs? Assume necessary imports"
+  code: |
+    theta1 = Parameter("theta1")
+    theta2 = Parameter("theta2")
+
+    qc = QuantumCircuit(2)
+    qc.ry(theta1, 0)
+    qc.ry(theta2, 1)
+
+    observables = [
+        [SparsePauliOp("ZI")],
+        [SparsePauliOp("IZ")]
+    ]
+
+    parameter_values = [
+        [[0, 0], [pi / 2, 0], [pi / 2, pi/ 2]]
+    ]
+
+
+    backend = AerSimulator()
+    estimator = Estimator(mode=backend)
+
+    pub = (qc, observables, parameter_values)
+
+    job = estimator.run([pub])
+    result = job.result()
+
+    print(result[0].data.evs.shape)
+
+  choices:
+    A: "(2,)"
+    B: "(3,2)"
+    C: "(2,3)"
+    D: "Error due to shapes not being broadcastable"
+  answer: C

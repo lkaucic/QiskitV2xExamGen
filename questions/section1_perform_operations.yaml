@@ -50,12 +50,12 @@
 
 - id: S1-006
   section: 1
-  question: "Starting from $\\ket{0}$, the sequence $Rx(\\frac{\\pi}{2})$, $Rz(\\frac{\\pi}{2})$, $Ry(\\frac{-\\pi}{2})$ is applied. What single $R(\\theta,\\phi)$ gate is this sequence equivalent to"
+  question: "Starting from $\\ket{0}$, the sequence $Rx(\\frac{\\pi}{2})$, $Rz(\\frac{\\pi}{2})$, $Ry(\\frac{-\\pi}{2})$ is applied. What single $R(\\theta,\\phi)$ gate is this sequence equivalent to?"
   choices:
     A: "$R(2\\pi,0)$"
     B: "$R(\\pi,\\frac{\\pi}{2})$"
     C: "$R(\\frac{3\\pi}{2},2\\pi)$"
-    D: "R(\\frac{\\pi}{2},0)"
+    D: "$R(\\frac{\\pi}{2},0)$"
   answer: A
 
 - id: S1-007
@@ -75,3 +75,13 @@
     C: "0.5"
     D: "1.0"
   answer: D
+
+- id: S1-008
+  section: 1
+  question: "In Pauli('XIZZ') which qubit gets X assuming little-endian notation?"
+  choices:
+    A: "3"
+    B: "2"
+    C: "1"
+    D: "0"
+  answer: A
